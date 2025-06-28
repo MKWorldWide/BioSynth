@@ -1,7 +1,18 @@
 {
-  "name": "novasanctum",
+  "name": "mkww-biosynthetic-vessel",
   "version": "0.1.0",
   "private": true,
+  "description": "MKWW Biosynthetic Vessel - Where Biology Meets Digital Transcendence",
+  "keywords": [
+    "biosynthetic",
+    "mkww",
+    "biology",
+    "technology",
+    "research",
+    "ai"
+  ],
+  "author": "MKWW (Master Key World Wide)",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,10 +22,15 @@
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
+    "aws-amplify": "^6.15.1",
     "framer-motion": "^11.0.8",
     "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
+    "react-intersection-observer": "^9.16.0",
+    "react-tsparticles": "^2.12.2",
+    "tsparticles-slim": "^2.12.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

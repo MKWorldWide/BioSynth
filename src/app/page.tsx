@@ -19,10 +19,13 @@ export default function Home() {
           className="text-center mb-16"
         >
           <h1 className="text-5xl font-bold text-emerald-400 mb-4">
-            NovaSanctum
+            MKWW Biosynthetic Vessel
           </h1>
-          <p className="text-xl text-slate-300">
+          <p className="text-xl text-slate-300 mb-4">
             Where Biology Meets Digital Transcendence
+          </p>
+          <p className="text-lg text-slate-400">
+            Commissioned under Master Key World Wide
           </p>
         </motion.div>
 
@@ -32,18 +35,18 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           <SacredCard
-            title="Research"
-            description="Explore the frontiers of synthetic biology"
+            title="Advanced Research"
+            description="Explore the frontiers of synthetic biology and digital consciousness"
             icon="🧬"
           />
           <SacredCard
-            title="Data"
-            description="Advanced analytics and visualization"
+            title="Data Analytics"
+            description="Advanced analytics and visualization for biosynthetic research"
             icon="📊"
           />
           <SacredCard
-            title="Collaborate"
-            description="Connect with researchers worldwide"
+            title="Global Collaboration"
+            description="Connect with researchers worldwide in the MKWW network"
             icon="🌐"
           />
         </div>
@@ -52,7 +55,7 @@ export default function Home() {
           <SacredButton
             variant="primary"
             size="large"
-            onClick={() => console.log('Journey begins...')}
+            onClick={() => console.log('MKWW Biosynthetic Vessel journey begins...')}
           >
             Begin Your Journey
           </SacredButton>

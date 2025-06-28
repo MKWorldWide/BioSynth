@@ -1,12 +1,5 @@
 import { motion } from 'framer-motion'
-
-interface Column<T> {
-  key: string
-  header: string
-  render?: (item: T) => React.ReactNode
-  width?: string
-  align?: 'left' | 'center' | 'right'
-}
+import { Column } from '@/types'
 
 interface SacredTableProps<T> {
   columns: Column<T>[]
@@ -90,6 +83,10 @@ export function SacredTable<T>({
                     >
                       {column.render
                         ? column.render(item)
+                        : column.accessor
+                        ? typeof column.accessor === 'function'
+                          ? column.accessor(item)
+                          : (item as any)[column.accessor]
                         : (item as any)[column.key]}
                     </td>
                   ))}

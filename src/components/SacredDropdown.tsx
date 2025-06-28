@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 interface SacredDropdownProps {
-  label: string
-  items: {
+  label?: string
+  items?: {
     label: string
     onClick: () => void
     icon?: ReactNode
@@ -14,6 +14,7 @@ interface SacredDropdownProps {
   className?: string
   align?: 'left' | 'right'
   trigger?: ReactNode
+  children?: ReactNode
 }
 
 export const SacredDropdown = ({
@@ -21,7 +22,8 @@ export const SacredDropdown = ({
   items,
   className = '',
   align = 'right',
-  trigger
+  trigger,
+  children
 }: SacredDropdownProps) => {
   return (
     <Menu as="div" className={`relative inline-block text-left ${className}`}>
@@ -75,7 +77,7 @@ export const SacredDropdown = ({
               `}
             >
               <div className="py-1">
-                {items.map((item, index) => (
+                {items && items.map((item, index) => (
                   <Menu.Item key={index}>
                     {({ active }: { active: boolean }) => (
                       <motion.button
@@ -101,6 +103,7 @@ export const SacredDropdown = ({
                     )}
                   </Menu.Item>
                 ))}
+                {children}
               </div>
             </Menu.Items>
           </Transition>

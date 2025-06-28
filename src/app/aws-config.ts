@@ -1,7 +1,6 @@
 import { Amplify } from 'aws-amplify';
-import { ResourcesConfig } from 'aws-amplify/auth';
 
-const awsConfig: ResourcesConfig = {
+const awsConfig: any = {
   Auth: {
     Cognito: {
       userPoolId: process.env.NEXT_PUBLIC_AWS_COGNITO_USER_POOL_ID || '',

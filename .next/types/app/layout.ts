@@ -1,4 +1,4 @@
-// File: /Users/sovereign/Projects/BioExpressSolutions/src/app/layout.tsx
+// File: C:\Users\sunny\Saved Games\BioSynth\src\app\layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

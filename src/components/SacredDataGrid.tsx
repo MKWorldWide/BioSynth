@@ -5,21 +5,7 @@ import { SacredPagination } from './SacredPagination'
 import { SacredDropdown } from './SacredDropdown'
 import { SacredAlert } from './SacredAlert'
 import { SacredSpinner } from './SacredSpinner'
-
-interface Column<T> {
-  header: string
-  accessor: keyof T | ((item: T) => ReactNode)
-  className?: string
-  sortable?: boolean
-  filterable?: boolean
-  width?: string
-}
-
-interface Filter {
-  column: string
-  value: string
-  operator: 'contains' | 'equals' | 'startsWith' | 'endsWith'
-}
+import { Column, Filter } from '@/types'
 
 interface SacredDataGridProps<T> {
   columns: Column<T>[]
@@ -61,7 +47,7 @@ export const SacredDataGrid = <T extends object>({
   const [currentPage, setCurrentPage] = useState(1)
   const [filters, setFilters] = useState<Filter[]>([])
   const [selectedColumns, setSelectedColumns] = useState<string[]>(
-    columns.map(col => typeof col.accessor === 'string' ? col.accessor : col.header)
+    columns.map(col => col.key)
   )
   const [selectedItems, setSelectedItems] = useState<T[]>([])
 
@@ -88,10 +74,7 @@ export const SacredDataGrid = <T extends object>({
   }, [data, filters])
 
   const visibleColumns = useMemo(() => {
-    return columns.filter(col => {
-      const colKey = typeof col.accessor === 'string' ? col.accessor : col.header
-      return selectedColumns.includes(colKey)
-    })
+    return columns.filter(col => selectedColumns.includes(col.key))
   }, [columns, selectedColumns])
 
   const paginatedData = useMemo(() => {
@@ -164,7 +147,7 @@ export const SacredDataGrid = <T extends object>({
                     placeholder={`Filter ${column.header}...`}
                     className="w-full px-3 py-2 bg-slate-800 border border-emerald-500/20 rounded-lg text-emerald-400 placeholder-emerald-400/50 focus:outline-none focus:border-emerald-500"
                     onChange={e => handleFilterChange(
-                      typeof column.accessor === 'string' ? column.accessor : column.header,
+                      column.key,
                       e.target.value,
                       'contains'
                     )}
@@ -182,64 +165,56 @@ export const SacredDataGrid = <T extends object>({
                 </button>
               }
             >
-              {columns.map((column, index) => {
-                const colKey = typeof column.accessor === 'string' ? column.accessor : column.header
-                return (
-                  <div key={index} className="p-2">
-                    <label className="flex items-center space-x-2 text-emerald-400">
-                      <input
-                        type="checkbox"
-                        checked={selectedColumns.includes(colKey)}
-                        onChange={() => handleColumnToggle(colKey)}
-                        className="form-checkbox text-emerald-500"
-                      />
-                      <span>{column.header}</span>
-                    </label>
-                  </div>
-                )
-              })}
+              {columns.map((column, index) => (
+                <div key={index} className="p-2">
+                  <label className="flex items-center space-x-2 text-emerald-400">
+                    <input
+                      type="checkbox"
+                      checked={selectedColumns.includes(column.key)}
+                      onChange={() => handleColumnToggle(column.key)}
+                      className="form-checkbox text-emerald-500"
+                    />
+                    <span>{column.header}</span>
+                  </label>
+                </div>
+              ))}
             </SacredDropdown>
           )}
         </div>
 
-        {showExport && onExport && (
-          <button
-            onClick={() => onExport(filteredData)}
-            className="px-4 py-2 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
-          >
-            Export
-          </button>
-        )}
-      </div>
-
-      <div className="relative">
-        {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm z-10">
-            <SacredSpinner size="lg" />
-          </div>
-        )}
-
-        <SacredTable
-          columns={visibleColumns}
-          data={paginatedData}
-          onRowClick={onRowClick}
-          emptyMessage={emptyMessage}
-          isLoading={isLoading}
-          loadingMessage={loadingMessage}
-        />
-      </div>
-
-      {showPagination && totalPages > 1 && (
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-emerald-400">
-            Showing {((currentPage - 1) * pageSize) + 1} to {Math.min(currentPage * pageSize, filteredData.length)} of {filteredData.length} items
-          </div>
-          <SacredPagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-          />
+        <div className="flex items-center space-x-4">
+          {showExport && onExport && (
+            <button
+              onClick={() => onExport(filteredData)}
+              className="px-4 py-2 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
+            >
+              Export
+            </button>
+          )}
         </div>
+      </div>
+
+      {isLoading ? (
+        <div className="flex justify-center py-8">
+          <SacredSpinner size="lg" />
+        </div>
+      ) : (
+        <>
+          <SacredTable
+            columns={visibleColumns}
+            data={paginatedData}
+            onRowClick={onRowClick}
+            emptyMessage={emptyMessage}
+          />
+
+          {showPagination && totalPages > 1 && (
+            <SacredPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
+        </>
       )}
     </div>
   )

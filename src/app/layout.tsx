@@ -7,8 +7,24 @@ import Script from 'next/script'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'BioExpress Solutions',
-  description: 'Where Biology Meets Digital Transcendence',
+  title: 'MKWW Biosynthetic Vessel',
+  description: 'Where Biology Meets Digital Transcendence - Advanced biosynthetic research platform commissioned under MKWW',
+  keywords: ['biosynthetic', 'mkww', 'biology', 'technology', 'research', 'ai', 'master key world wide'],
+  authors: [{ name: 'MKWW (Master Key World Wide)' }],
+  creator: 'MKWW (Master Key World Wide)',
+  publisher: 'MKWW (Master Key World Wide)',
+  robots: 'index, follow',
+  openGraph: {
+    title: 'MKWW Biosynthetic Vessel',
+    description: 'Where Biology Meets Digital Transcendence',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MKWW Biosynthetic Vessel',
+    description: 'Where Biology Meets Digital Transcendence',
+  },
 }
 
 export default function RootLayout({
