@@ -73,6 +73,7 @@ export const SacredDataProvider = ({ children }: SacredDataProviderProps) => {
       {toast && (
         <div className="fixed bottom-4 right-4 z-50">
           <SacredToast
+            isVisible={true}
             type={toast.type}
             message={toast.message}
             onClose={() => setToast(null)}

@@ -1,4 +1,4 @@
-import { API, graphqlOperation } from 'aws-amplify';
+import { generateClient } from 'aws-amplify/api';
 import { createContact } from '../graphql/mutations';
 
 export interface ContactFormData {
@@ -7,6 +7,8 @@ export interface ContactFormData {
   org?: string;
   message: string;
 }
+
+const client = generateClient();
 
 export async function submitContact(data: ContactFormData) {
   const input = {
@@ -17,7 +19,7 @@ export async function submitContact(data: ContactFormData) {
     timestamp: new Date().toISOString(),
   };
   try {
-    const result = await API.graphql(graphqlOperation(createContact, { input }));
+    const result = await client.graphql({ query: createContact, variables: { input } });
     return { success: true, result };
   } catch (error) {
     return { success: false, error };
