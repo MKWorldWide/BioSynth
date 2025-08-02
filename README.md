@@ -19,6 +19,8 @@ npm run dev
 npm run build
 ```
 
+Then open `http://localhost:3000/editor` to experiment with the new DNA Editor.
+
 ## 🛠️ Tech Stack
 
 - **Frontend**: Next.js 14 + TypeScript + Tailwind CSS
@@ -106,6 +108,11 @@ npm run build
     - Icon support
     - Hover animations
     - Link integration
+
+14. **DNAEditor**
+    - Real-time editing of custom DNA sequences
+    - Preloaded Naga and Celestial templates
+    - Live 3D helix visualization
 
 ### Data Management
 

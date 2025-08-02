@@ -14,6 +14,12 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface DNAHelixProps {
+  /**
+   * Optional custom sequence. If provided, the helix renders this sequence
+   * instead of generating a random one. Complementary bases are generated
+   * automatically.
+   */
+  sequence?: string;
   data?: any;
   interactive?: boolean;
   showLabels?: boolean;
@@ -42,6 +48,7 @@ interface Nucleotide {
 }
 
 export const DNAHelix3D: React.FC<DNAHelixProps> = ({
+  sequence,
   data,
   interactive = true,
   showLabels = true,
@@ -59,16 +66,19 @@ export const DNAHelix3D: React.FC<DNAHelixProps> = ({
   const [selectedNucleotide, setSelectedNucleotide] = useState<string | null>(null);
   const [hoveredNucleotide, setHoveredNucleotide] = useState<string | null>(null);
 
-  // Generate DNA strands based on consciousness level
+  // Generate DNA strands from a provided sequence or random values
   useEffect(() => {
     const generateDNAStrands = () => {
       const newStrands: DNAStrand[] = [];
       const newNucleotides: Nucleotide[] = [];
-      
+
+      // Determine base sequence for strand 0
+      const baseSequence = sequence || generateRandomSequence(Math.floor(20 + consciousnessLevel * 30));
+
       // Generate two complementary strands
       for (let strandIndex = 0; strandIndex < 2; strandIndex++) {
-        const strandLength = Math.floor(20 + consciousnessLevel * 30); // 20-50 nucleotides
-        const strandSequence = generateRandomSequence(strandLength);
+        const strandSequence = strandIndex === 0 ? baseSequence : complementSequence(baseSequence);
+        const strandLength = strandSequence.length;
         
         const strand: DNAStrand = {
           id: `strand-${strandIndex}`,
@@ -108,7 +118,7 @@ export const DNAHelix3D: React.FC<DNAHelixProps> = ({
     };
     
     generateDNAStrands();
-  }, [consciousnessLevel, researchProgress]);
+  }, [consciousnessLevel, researchProgress, sequence]);
 
   // Auto-rotation effect
   useEffect(() => {
@@ -207,6 +217,14 @@ export const DNAHelix3D: React.FC<DNAHelixProps> = ({
   const generateRandomSequence = (length: number): string => {
     const bases = ['A', 'T', 'G', 'C'];
     return Array.from({ length }, () => bases[Math.floor(Math.random() * bases.length)]).join('');
+  };
+
+  const complementSequence = (seq: string): string => {
+    const complementMap: Record<string, string> = { A: 'T', T: 'A', G: 'C', C: 'G' };
+    return seq
+      .split('')
+      .map(base => complementMap[base] || 'N')
+      .join('');
   };
 
   const toggleRotation = () => setIsRotating(!isRotating);
