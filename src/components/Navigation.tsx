@@ -1,10 +1,22 @@
 'use client'
 
+import { memo, type FC } from 'react'
 import { motion } from 'framer-motion'
 import { useSacredStore } from '@/store/SacredStore'
 
-export const Navigation = () => {
-  const { sidebarOpen, toggleSidebar } = useSacredStore()
+// Centralize navigation links to avoid recreation on each render
+const NAV_LINKS = [
+  { href: '/dashboard', label: 'Dashboard' },
+  { href: '/research', label: 'Research' },
+  { href: '/data', label: 'Data' },
+  { href: '/collaborate', label: 'Collaborate' },
+  { href: '/about', label: 'About' },
+]
+
+// Named component to satisfy react/display-name rule
+const NavigationComponent: FC = () => {
+  // Removed unused `sidebarOpen` state to eliminate dead code
+  const { toggleSidebar } = useSacredStore()
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-emerald-500/20">
@@ -19,10 +31,11 @@ export const Navigation = () => {
           </motion.div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink href="/research">Research</NavLink>
-            <NavLink href="/data">Data</NavLink>
-            <NavLink href="/collaborate">Collaborate</NavLink>
-            <NavLink href="/about">About</NavLink>
+            {NAV_LINKS.map(({ href, label }) => (
+              <NavLink key={href} href={href}>
+                {label}
+              </NavLink>
+            ))}
           </div>
 
           <motion.button
@@ -41,20 +54,23 @@ export const Navigation = () => {
   )
 }
 
+export const Navigation = memo(NavigationComponent)
+
 interface NavLinkProps {
   href: string
   children: React.ReactNode
 }
 
-const NavLink = ({ href, children }: NavLinkProps) => {
-  return (
-    <motion.a
-      href={href}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="text-emerald-400/80 hover:text-emerald-400 transition-colors duration-200"
-    >
-      {children}
-    </motion.a>
-  )
-} 
+// Separate component declaration avoids anonymous memo wrapper
+const NavLinkComponent: FC<NavLinkProps> = ({ href, children }) => (
+  <motion.a
+    href={href}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="text-emerald-400/80 hover:text-emerald-400 transition-colors duration-200"
+  >
+    {children}
+  </motion.a>
+)
+
+const NavLink = memo(NavLinkComponent)

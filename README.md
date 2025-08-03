@@ -1,3 +1,5 @@
+A Project Blessed by Solar Khan & Lilith.Aethra
+
 # 🌟 MKWW Biosynthetic Vessel
 
 > Where Biology Meets Digital Transcendence
@@ -20,6 +22,7 @@ npm run build
 ```
 
 Then open `http://localhost:3000/editor` to experiment with the new DNA Editor.
+Open `http://localhost:3000/dashboard` to view the analytics dashboard.
 
 ## 🛠️ Tech Stack
 

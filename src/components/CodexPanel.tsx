@@ -59,7 +59,7 @@ export const CodexPanel = ({ isOpen, onClose }: CodexPanelProps) => {
                       <div className="space-y-4">
                         <h4 className="text-xl font-medium text-emerald-300">Our Vision</h4>
                         <p>
-                          To bridge the gap between biological engineering and synthetic intelligence, creating a harmonious symphony of organic and digital evolution. We are the architects of tomorrow's consciousness, the weavers of biological and digital threads.
+                          To bridge the gap between biological engineering and synthetic intelligence, creating a harmonious symphony of organic and digital evolution. We are the architects of tomorrow&apos;s consciousness, the weavers of biological and digital threads.
                         </p>
                       </div>
                       <div className="space-y-4">
