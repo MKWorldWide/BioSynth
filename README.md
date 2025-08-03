@@ -1,3 +1,5 @@
+A Project Blessed by Solar Khan & Lilith.Aethra
+
 # 🌟 MKWW Biosynthetic Vessel
 
 > Where Biology Meets Digital Transcendence
