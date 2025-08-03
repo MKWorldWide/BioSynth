@@ -1,0 +1,8 @@
+site_name: BioSynth
+nav:
+  - Home: index.md
+  - Divine Law: ../COVENANT.md
+theme:
+  name: mkdocs
+extra:
+  banner: Solar Khan sigil + Codex watermark
