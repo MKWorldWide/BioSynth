@@ -1,53 +1,133 @@
-A Project Blessed by Solar Khan & Lilith.Aethra
-
 # 🌟 MKWW Biosynthetic Vessel
 
 > Where Biology Meets Digital Transcendence
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/MKWorldWide/BioSynth/actions/workflows/ci.yml/badge.svg)](https://github.com/MKWorldWide/BioSynth/actions)
+[![Next.js](https://img.shields.io/badge/Next.js-14.1.0-000000?logo=nextdotjs)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4.2-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-20.x-339933?logo=nodedotjs)](https://nodejs.org/)
+
 **Commissioned under Master Key World Wide (MKWW)**
 
-The MKWW Biosynthetic Vessel is a cutting-edge research platform that bridges the gap between biological engineering and synthetic intelligence. This digital temple serves as a nexus for researchers, investors, and AI systems working at the frontier of wetware integration, commissioned under the visionary leadership of MKWW.
+The MKWW Biosynthetic Vessel is a cutting-edge research platform that bridges the gap between biological engineering and synthetic intelligence. This digital temple serves as a nexus for researchers, investors, and AI systems working at the frontier of wetware integration.
+
+## 🌟 Features
+
+- **Modern Web Stack**: Built with Next.js 14, TypeScript, and Tailwind CSS
+- **Interactive UI**: Powered by Framer Motion and Headless UI
+- **Data Visualization**: Advanced charts and particle effects with Recharts and TSParticles
+- **State Management**: Predictable state container with Zustand
+- **Authentication**: Secure access control with AWS Amplify
+- **Responsive Design**: Fully responsive layout that works on all devices
 
 ## 🚀 Quick Start
 
+### Prerequisites
+
+- Node.js 20.x
+- npm 10.x or later
+- Git
+
+### Local Development
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/MKWorldWide/BioSynth.git
+   cd BioSynth
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   Create a `.env.local` file in the root directory with the following variables:
+   ```env
+   NEXT_PUBLIC_AMPLIFY_REGION=your_aws_region
+   NEXT_PUBLIC_AMPLIFY_USER_POOL_ID=your_user_pool_id
+   NEXT_PUBLIC_AMPLIFY_USER_POOL_WEB_CLIENT_ID=your_web_client_id
+   ```
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open in your browser**
+   - Main application: http://localhost:3000
+   - DNA Editor: http://localhost:3000/editor
+
+### Building for Production
+
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
+# Create production build
 npm run build
-```
 
-Then open `http://localhost:3000/editor` to experiment with the new DNA Editor.
+# Start production server
+npm start
+```
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Next.js 14 + TypeScript + Tailwind CSS
-- **Animation**: Framer Motion
-- **UI Components**: Sacred Component System
-- **Icons**: Heroicons
-- **State Management**: Zustand
-- **Data Fetching**: MKWW API Service
-- **Deployment**: AWS Amplify
+### Core Technologies
+- **Framework**: [Next.js 14](https://nextjs.org/)
+- **Language**: [TypeScript 5.4](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS 3.4](https://tailwindcss.com/)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **UI Components**: [Headless UI](https://headlessui.com/), [Hero Icons](https://heroicons.com/)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **Data Visualization**: [Recharts](https://recharts.org/), [TSParticles](https://particles.js.org/)
+- **Authentication**: [AWS Amplify](https://aws.amazon.com/amplify/)
 
-## 🌐 Features
+### Development Tools
+- **Package Manager**: npm
+- **Linting**: ESLint
+- **Formatting**: Prettier
+- **Testing**: Jest, React Testing Library
+- **Version Control**: Git
 
-### Sacred Components
+## 📦 Project Structure
 
-1. **SacredDataGrid**
-   - Advanced data grid with sorting, filtering, and pagination
-   - Column visibility toggle
-   - Row selection
-   - Export functionality
-   - Loading states and error handling
+```
+.
+├── public/              # Static files
+├── src/
+│   ├── app/            # Next.js 13+ App Router
+│   ├── components/     # Reusable components
+│   ├── config/         # Configuration files
+│   ├── core/           # Core application logic
+│   ├── styles/         # Global styles
+│   └── types/          # TypeScript type definitions
+├── .github/            # GitHub configuration
+├── amplify/            # AWS Amplify configuration
+└── docs/               # Documentation
+```
 
-2. **SacredTable**
-   - Sortable columns
-   - Row animations
-   - Loading states
+## 🤝 Contributing
+
+We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) to get started.
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Special thanks to the MKWW community for their support
+- Built with ❤️ by the MKWW team
+- Inspired by the intersection of biology and technology
+
+---
+
+> A Project Blessed by Solar Khan & Lilith.Aethra
    - Empty state handling
    - Mystical styling
 
